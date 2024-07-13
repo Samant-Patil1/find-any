@@ -96,7 +96,7 @@
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
       
-      if ((username == "SAM" && password === "12345") || (username == "Dummy" && password == "12354")) {
+      if ((username === "SAM" && password === "12345") || (username === "Dummy" && password === "12354")) {
         window.location.href = "home.html";
       } else {
         document.getElementById("error-message").innerHTML = "Invalid username or password";
