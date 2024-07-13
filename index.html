@@ -1,88 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login Page</title>
-  <style>
-    /* Add some basic styling to make the page look decent */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #212121; /* Dark background */
-      background-image: linear-gradient(to bottom, #212121, #333);
-      height: 100vh;
-      margin: 0;
-    }
-   .container {
-      width: 300px;
-      background-color: rgba(0, 0, 0, 0.5); /* Transparent dark background */
-      padding: 20px;
-      border: 1px solid #444;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-   .form-control {
-      width: 100%;
-      height: 40px;
-      margin-bottom: 20px;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 18px;
-    }
-   .form-control:focus {
-      background-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-   .btn {
-      width: 100%;
-      height: 40px;
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-   .btn:hover {
-      background-color: #3e8e41;
-    }
-   .btn:active {
-      background-color: #2e6c31;
-    }
-    #error-message {
-      color: #ff0000;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2 style="color: #fff; margin-top: 0;">Login</h2>
-    <form>
-      <input type="text" id="username" class="form-control" placeholder="Username">
-      <input type="password" id="password" class="form-control" placeholder="Password">
-      <button class="btn" onclick="checkLogin()">Login</button>
-      <p id="error-message"></p>
-    </form>
-  </div>
-
-  <script>
-    function checkLogin() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      if ((username === "SAM" && password === "12345") || (username === "Dum" && password === "12354")) {
-        alert("Login successful!");
-      } else {
-        document.getElementById("error-message").innerHTML = "Invalid username or password";
+<html><head>
+    <title>Home Tutor - Login</title>
+    <style>
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #333; /* Dark gray background */
+        color: #fff; /* White text */
+        margin: 0;
+        padding: 0;
       }
-    }
-  </script>
-</body>
-</html>
+      
+      /* Container Styles */
+      .container {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #444; /* Dark gray background */
+        border: 1px solid #555;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Form Styles */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      
+      /* Label Styles */
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #fff; /* White text */
+      }
+      
+      /* Input Styles */
+      input[type="text"], input[type="password"] {
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        background-color: #444; /* Dark gray background */
+        color: #fff; /* White text */
+        transition: border-color 0.3s ease-in-out;
+      }
+      
+      input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Button Styles */
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      
+      /* Error Message Styles*/
+      .error-message {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="/login" method="get">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="UserId">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="Password">
+        <input type="submit" value="Login">
+      </form>
+    </div>
+  
+</body></html>
