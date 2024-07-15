@@ -8,6 +8,7 @@
         body {
             background-color: #333;
             font-family: Arial, sans-serif;
+            overflow: hidden; /* Add this to prevent scrolling */
         }
 
         .container {
@@ -17,6 +18,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transform: translateY(0); /* Add this for smooth animation */
+            transition: transform 0.5s; /* Add this for smooth animation */
         }
 
         .login-form, .signup-form {
@@ -26,6 +29,9 @@
         .login-form h2, .signup-form h2 {
             color: #fff;
             margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .login-form input[type="text"], .login-form input[type="password"], .signup-form input[type="text"], .signup-form input[type="password"] {
@@ -37,10 +43,13 @@
             border-radius: 10px;
             background-color: #555;
             color: #fff;
+            font-size: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .login-form input[type="text"]:focus, .login-form input[type="password"]:focus, .signup-form input[type="text"]:focus, .signup-form input[type="password"]:focus {
             background-color: #666;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         .login-form button[type="button"], .signup-form button[type="button"] {
@@ -53,14 +62,49 @@
             background-color: #777;
             color: #fff;
             cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .login-form button[type="button"]:hover, .signup-form button[type="button"]:hover {
             background-color: #888;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         #error-msg, #signup-error-msg {
             color: #ff0000;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Add some futuristic effects */
+        .container {
+            perspective: 1000px;
+        }
+
+        .login-form, .signup-form {
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .login-form input[type="text"], .login-form input[type="password"], .signup-form input[type="text"], .signup-form input[type="password"] {
+            transform: translateZ(20px);
+            transition: transform 0.5s;
+        }
+
+        .login-form input[type="text"]:focus, .login-form input[type="password"]:focus, .signup-form input[type="text"]:focus, .signup-form input[type="password"]:focus {
+            transform: translateZ(30px);
+        }
+
+        .login-form button[type="button"], .signup-form button[type="button"] {
+            transform: translateZ(20px);
+            transition: transform 0.5s;
+        }
+
+        .login-form button[type="button"]:hover, .signup-form button[type="button"]:hover {
+            transform: translateZ(30px);
         }
     </style>
 </head>
@@ -71,7 +115,7 @@
             <form>
                 <input type="text" id="username" placeholder="Username">
                 <input type="password" id="password" placeholder="Password">
-                <button id="login-btn">Login</button>
+                <buttonid="login-btn">Login</button>
                 <p id="error-msg"></p>
                 <p>Don't have an account? <span id="signup-link">Signup</span></p>
             </form>
@@ -144,7 +188,7 @@
                 return;
             }
 
-            if (password !== confirmPassword) {
+            if (password!== confirmPassword) {
                 signupErrorMsg.textContent = "Passwords do not match";
                 signupErrorMsg.style.color = "red";
                 return;
