@@ -117,3 +117,152 @@
             border-radius: 10px;
             background-color: #4285f4;
             color: #fff;
+cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .google-btn:hover {
+            background-color: #357ae8;
+        }
+
+        .google-btn:active {
+            background-color: #2664d3;
+        }
+
+        .google-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+        }
+
+        .google-btn .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: #fff;
+        }
+
+        .google-btn .label {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button id="login-btn">Login</button>
+                <p id="error-msg"></p>
+                <p>Don't have an account? <span id="signup-link">Signup</span></p>
+                <button class="google-btn">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                    </svg>
+                    <span class="label">Continue with Google</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="signup-form" style="display: none;">
+            <h2>Signup</h2>
+            <form>
+                <input type="text" id="signup-username" placeholder="Username">
+                <input type="password" id="signup-password" placeholder="Password">
+                <input type="password" id="confirm-password" placeholder="Confirm Password">
+                <button id="signup-btn">Signup</button>
+                <p id="signup-error-msg"></p>
+                <p>Already have an account? <span id="login-link">Login</span></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('login-btn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMsg = document.getElementById('error-msg');
+
+        const signupBtn = document.getElementById('signup-btn');
+        const signupUsernameInput = document.getElementById('signup-username');
+        const signupPasswordInput = document.getElementById('signup-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const signupErrorMsg = document.getElementById('signup-error-msg');
+
+        const loginLink = document.getElementById('login-link');
+        constsignupLink = document.getElementById('signup-link');
+
+        loginLink.addEventListener('click', () => {
+            document.querySelector('.login-form').style.display = 'block';
+            document.querySelector('.signup-form').style.display = 'none';
+        });
+
+        signupLink.addEventListener('click', () => {
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector('.signup-form').style.display = 'block';
+        });
+
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (username === "SAM" && password === "12345") {
+                errorMsg.textContent = "Login successful!";
+                errorMsg.style.color = "green";
+            } else if (username === "Dummy" && password === "12354") {
+                errorMsg.textContent = "Login successful!";
+                errorMsg.style.color = "green";
+            } else {
+                errorMsg.textContent = "Invalid username or password";
+                errorMsg.style.color = "red";
+            }
+        });
+
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const username = signupUsernameInput.value.trim();
+            const password = signupPasswordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            if (username === "" || password === "" || confirmPassword === "") {
+                signupErrorMsg.textContent = "All fields are required";
+                signupErrorMsg.style.color = "red";
+                return;
+            }
+
+            if (password!== confirmPassword) {
+                signupErrorMsg.textContent = "Passwords do not match";
+                signupErrorMsg.style.color = "red";
+                return;
+            }
+
+            if (username === "SAM" || password === "12345" || username === "Dummy" || password === "12354") {
+                signupErrorMsg.textContent = "Username or password already exists";
+                signupErrorMsg.style.color = "red";
+                return;
+            }
+
+            signupErrorMsg.textContent = "Signup successful!";
+            signupErrorMsg.style.color = "green";
+        });
+
+        // Add event listener for Google button
+        const googleBtn = document.querySelector('.google-btn');
+        googleBtn.addEventListener('click', () => {
+            // Replace with your Google OAuth 2.0 API endpoint
+            window.location.href = 'https://example.com/google-oauth';
+        });
+    </script>
+</body>
+</html>
